@@ -1,0 +1,52 @@
+body {
+  margin: 0;
+  /* overflow: hidden; */
+}
+
+main {
+  background-color: #282c34;
+  min-width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid red;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+div {
+  height: 33vh;
+  width: 99vw;
+}
+
+.red {
+  background-color: #300;
+}
+
+.green {
+  background-color: #030;
+}
+
+.blue {
+  background-color: #003;
+}
+
+div#dragMe {
+  position: absolute;
+  height: 40vmin;
+  width: 40vmin;
+  background-color: #c90;
+}
+
+div#dragMe.flash {
+  background-color: #fff
+}
+
+.unselectable {
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Standard */
+}
