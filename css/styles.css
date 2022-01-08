@@ -7,13 +7,14 @@ main {
   background-color: #282c34;
   min-width: 100vw;
   min-height: 100vh;
+  border: 2px solid red;
+  box-sizing: border-box;
+  overflow: hidden;
+
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  border: 2px solid red;
-  box-sizing: border-box;
-  overflow: hidden;
 }
 
 div {
@@ -33,11 +34,42 @@ div {
   background-color: #003;
 }
 
+div.container {
+  position: fixed;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  height: 60vh;
+  width: 60vw;
+  left: 20vw;
+  top: 20vh;
+  background-color: #ffffff11;
+}
+
+div.container,
 div#dragMe {
   position: absolute;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;;
+  text-align: center;
+
   height: 40vmin;
   width: 40vmin;
   background-color: #c90;
+
+  font-size: 8vmin;
+}
+
+div.container { 
+  left: calc(30vw - 1vmin);
+  top: calc(30vh - 1vmin);
+  background-color: #00000022;
+  border: 1vmin inset #33333366;
 }
 
 div#dragMe.flash {
