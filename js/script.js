@@ -306,7 +306,6 @@ const startTracking = ({ event, drag, drop, offset }) => {
 /// CUSTOM DRAG //// CUSTOM DRAG //// CUSTOM DRAG //// CUSTOM DRAG ////
 
 let dragMe
-  , offset
   , cancelTracking
   , timeOut
 
@@ -319,7 +318,6 @@ const drop = () => {
 
 
 const startDrag = (event) => {
-  event.preventDefault()
 
   reset()
   dragMe.innerHTML = "Wheeee!"
@@ -334,6 +332,8 @@ const startDrag = (event) => {
 
 
 const checkForDrag = (event) => {
+  event.preventDefault()
+
   dragMe.innerHTML = "Drag me!"
 
   detectMovement(event, 16)
@@ -357,8 +357,9 @@ const flashDiv = (text) => {
 
   if (text === "timeOut") { // called by reject
     clearTimeout(timeOut)
-    options = { once: true }
+    const options = { once: true }
     document.body.addEventListener("mouseup", reset, options)
+    document.body.addEventListener("touchend", reset, options)
 
   } else {
     timeOut = setTimeout(reset, 1000)
