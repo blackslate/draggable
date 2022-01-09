@@ -46,8 +46,8 @@ div#dragMe {
 }
 
 div.container { 
-  left: calc(30vw - 1vmin);
-  top: calc(30vh - 1vmin);
+  left: calc(50vw - 21vmin);
+  top: calc(50vh - 21vmin);
   background-color: #00000022;
   border: 1vmin inset #33333366;
 }
