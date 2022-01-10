@@ -42,7 +42,8 @@ div#dragMe {
   width: 40vmin;
   background-color: #c90;
 
-  font-size: 6vmin;
+  font-size: 8vmin;
+  font-family: "Times New Roman";
 }
 
 div.container { 
