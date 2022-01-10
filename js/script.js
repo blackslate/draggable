@@ -27,7 +27,7 @@ const startDrag = (event) => {
 const checkForDrag = (event) => {
   event.preventDefault()
 
-  dragMe.innerHTML = "Drag me!"
+  reset()
 
   detectMovement(event, 16)
   .then(() => startDrag(event))
@@ -41,21 +41,34 @@ const checkForDrag = (event) => {
 const reset = () => {
   clearTimeout(timeOut)
   dragMe.classList.remove("flash")
-  dragMe.innerHTML = "Drag me!"
+  dragMe.innerHTML = "Click me, hold me, drag me!"
+}
+
+
+const resetOnMouseUp = () => {
+  clearTimeout(timeOut)
+  const options = { once: true }
+  document.body.addEventListener("mouseup", reset, options)
+  document.body.addEventListener("touchend", reset, options)
 }
 
 
 const flashDiv = (text) => {
   dragMe.classList.add("flash")
 
-  if (text === "timeOut") { // called by reject
-    clearTimeout(timeOut)
-    const options = { once: true }
-    document.body.addEventListener("mouseup", reset, options)
-    document.body.addEventListener("touchend", reset, options)
+  switch (text) {
+    case "release": // one reason to reject promise of drag
+      text = "We clicked."
 
-  } else {
-    timeOut = setTimeout(reset, 1000)
+      // ᐁᐁᐁ fall through to the setTimeout line ᐁᐁᐁ
+
+    default: // (promise was resolved)
+      timeOut = setTimeout(reset, 1000)
+    break
+
+    case "timeOut": // another reason to reject promise of drag
+      resetOnMouseUp()
+      text = "You pressed and held me : )"
   }
 
   dragMe.innerHTML = text
@@ -66,3 +79,5 @@ const flashDiv = (text) => {
 dragMe = document.getElementById("dragMe")
 dragMe.addEventListener("mousedown", checkForDrag, false)
 dragMe.addEventListener("touchstart", checkForDrag, false)
+
+reset()
